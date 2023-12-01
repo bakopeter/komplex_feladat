@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <title>Komplex feladat</title>
+</head>
+
+<body>
+  <form action="" class="text-primary-emphasis bs-primary" id="gameCollection">
+    <fieldset>
+      <br>
+      <legend class="mb-3 container-xl">JÁTÉKGYŰJTEMÉNY</legend>
+      <hr>
+      <div class="container-xl mb-3">
+        <label for="gameTitle" class="form-label">A játék címe</label>
+        <input type="text" class="form-control" id="gameTitle" placeholder="A játék  címe">
+      </div>
+      <div class="container-xl mb-3">
+        <label for="gamePrice" class="form-label">A játék ára (€)</label>
+        <input type="text" class="form-control" id="gamePrice" placeholder="A játék ára Euroban">
+      </div>
+      <div class="container-xl mb-3">
+        <label for="gameStudio" class="form-label">A játékot készítő stúdió neve</label>
+        <input type="text" class="form-control" id="gameStudio" placeholder="A stúdió neve">
+      </div>
+      <div class="container-xl mb-3 form-check">
+        <div style="margin-left: 15px;">
+          <input class="form-check-input bg-primary-emphasis" type="checkbox" value="gameOnline" id="gameOnline">
+          <label class="form-check-label" for="gameOnline">Online multiplayer játék</label>
+        </div>
+      </div>
+      <hr>
+      <div class="container-xl form-check">
+        <button class="btn btn-primary" type="button" id="saveGame">Mentés</button>
+        <button class="btn btn-primary" type="button" id="listGames">Listázás</button>
+      </div>
+    </fieldset>
+    <hr>
+    <table class="container-xl table table-striped table-hover" id="gameTable" style="visibility: hidden;" bg-danger-subtle>
+      <thead class="table-striped table-hover">
+        <tr class="table-striped table-hover">
+          <th class="col-6">Cím</th>
+          <th class="col-2">Ár (Ft)</th>
+          <th class="col-2">Stúdió</th>
+          <th class="col-2">Online</th>
+        </tr>
+      </thead>
+      <tbody class="table-striped table-hover" id="gameBody">
+
+      </tbody>
+    </table>
+
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <!--
+  
+    -->
+</body>
+
+</html>

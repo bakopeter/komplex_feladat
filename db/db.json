@@ -1,0 +1,67 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "gameTitle": "Street Fighter 6",
+      "gamePrice": 29.2,
+      "gameStudio": "Metacritic",
+      "gameOnline": true
+    },
+    {
+      "gameTitle": "Football Manager 2024",
+      "gamePrice": 34.83,
+      "gameStudio": "SEGA",
+      "gameOnline": false,
+      "id": 2
+    },
+    {
+      "gameTitle": "EA SPORTS FC 24",
+      "gamePrice": 20.78,
+      "gameStudio": "Electronic Arts",
+      "gameOnline": false,
+      "id": 3
+    },
+    {
+      "gameTitle": "Spider-Man",
+      "gamePrice": 37.58,
+      "gameStudio": "Marvel",
+      "gameOnline": true,
+      "id": 4
+    },
+    {
+      "gameTitle": "Retro Commander",
+      "gamePrice": 0,
+      "gameStudio": "Noble Master LLC",
+      "gameOnline": true,
+      "id": 5
+    },
+    {
+      "gameTitle": "Super Mario Bros",
+      "gamePrice": 40.33,
+      "gameStudio": "Nintendo",
+      "gameOnline": false,
+      "id": 6
+    },
+    {
+      "gameTitle": "The Legend of Zelda",
+      "gamePrice": 38.05,
+      "gameStudio": "Nintendo",
+      "gameOnline": false,
+      "id": 7
+    },
+    {
+      "gameTitle": "Call of Duty",
+      "gamePrice": 30,
+      "gameStudio": "Activision",
+      "gameOnline": true,
+      "id": 8
+    },
+    {
+      "gameTitle": "Anno 1800",
+      "gamePrice": 50.39,
+      "gameStudio": "Ubisoft",
+      "gameOnline": true,
+      "id": 9
+    }
+  ]
+}

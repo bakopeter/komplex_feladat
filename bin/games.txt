@@ -1,0 +1,9 @@
+"Cím","Ár","Stúdió","Online"
+"Football Manager 2024",34.83,"SEGA",false
+"EA SPORTS FC 24",20.78,"Electronic Arts",false
+"Spider-Man",37.58,"Marvel",true
+"Retro Commander",0.0,"Noble Master LLC",true
+"Super Mario Bros",40.33,"Nintendo",false
+"The Legend of Zelda",38.05,"Nintendo",false
+"Call of Duty",30.0,"Activision",true
+"Anno 1800",50.39,"Ubisoft",true
