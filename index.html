@@ -19,15 +19,15 @@
       <hr>
       <div class="container-xl mb-3">
         <label for="gameTitle" class="form-label">A játék címe</label>
-        <input type="text" class="form-control" id="gameTitle" placeholder="A játék  címe">
+        <input type="text" class="form-control" id="gameTitle" placeholder="A játék  címe" required>
       </div>
       <div class="container-xl mb-3">
         <label for="gamePrice" class="form-label">A játék ára (€)</label>
-        <input type="text" class="form-control" id="gamePrice" placeholder="A játék ára Euroban">
+        <input type="text" class="form-control" id="gamePrice" placeholder="A játék ára Euroban" required>
       </div>
       <div class="container-xl mb-3">
         <label for="gameStudio" class="form-label">A játékot készítő stúdió neve</label>
-        <input type="text" class="form-control" id="gameStudio" placeholder="A stúdió neve">
+        <input type="text" class="form-control" id="gameStudio" placeholder="A stúdió neve" required>
       </div>
       <div class="container-xl mb-3 form-check">
         <div style="margin-left: 15px;">
@@ -37,7 +37,7 @@
       </div>
       <hr>
       <div class="container-xl form-check">
-        <button class="btn btn-primary" type="button" id="saveGame">Mentés</button>
+        <input class="btn btn-primary" type="submit" id="saveGame" value="Mentés">
         <button class="btn btn-primary" type="button" id="listGames">Listázás</button>
       </div>
     </fieldset>

@@ -34,34 +34,6 @@
       "gameStudio": "Noble Master LLC",
       "gameOnline": true,
       "id": 5
-    },
-    {
-      "gameTitle": "Super Mario Bros",
-      "gamePrice": 40.33,
-      "gameStudio": "Nintendo",
-      "gameOnline": false,
-      "id": 6
-    },
-    {
-      "gameTitle": "The Legend of Zelda",
-      "gamePrice": 38.05,
-      "gameStudio": "Nintendo",
-      "gameOnline": false,
-      "id": 7
-    },
-    {
-      "gameTitle": "Call of Duty",
-      "gamePrice": 30,
-      "gameStudio": "Activision",
-      "gameOnline": true,
-      "id": 8
-    },
-    {
-      "gameTitle": "Anno 1800",
-      "gamePrice": 50.39,
-      "gameStudio": "Ubisoft",
-      "gameOnline": true,
-      "id": 9
     }
   ]
 }

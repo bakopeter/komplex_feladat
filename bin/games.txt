@@ -7,3 +7,15 @@
 "The Legend of Zelda",38.05,"Nintendo",false
 "Call of Duty",30.0,"Activision",true
 "Anno 1800",50.39,"Ubisoft",true
+"100 Doors Games",7.76,"Peaksel",false
+"103",4.93,"Dystopia Interactive",false
+"10 Second Ninja X",7.34,"Thalamus Digital",false
+"10 Second Run RETURNS",2.76,"Edia",false
+"11111Game",7.7,"Insane Code",false
+"Football Manager 2023",14.99,"SEGA",true
+"NBA 2K22 - Europe",19.3,"2K",false
+"Age of Empires IV",11.89,"Relic Entertainment",false
+"For The King II",16.49,"Curve Games",false
+
+"Jurassic World Evolution 2",5.69,"Frontier Developments",false
+"Avatar: Frontiers of Pandora",51.69,"Ubisoft",false
