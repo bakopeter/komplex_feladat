@@ -41,15 +41,14 @@ function JatekFeltoltes(game, url) {
         },
         body: JSON.stringify(game)
     };
-
     return fetch(url, fetchOptions).then(
         response => response.json());
-}
+};
 /*
 Készítsen Listazas() néven függvényt mely a fenti táblázat adatait tölti fel a 
 megfelelő formátumu adatokkal. 
 */
-function Listazas() {
+function Listazas(games) {
     let gameTable = document.getElementById("gameTable");
     gameTable.style.visibility = "visible";
     let gameBody = document.getElementById("gameBody");
@@ -72,6 +71,16 @@ function Listazas() {
         gameRow.appendChild(gameData);
         gameData.innerHTML = game.gameOnline;
     });
+
+    gameRow = document.createElement("tr");
+    gameRow.className = " table-striped";
+    gameBody.appendChild(gameRow);
+    gameData = document.createElement("th");
+    gameRow.appendChild(gameData);
+    gameData.innerHTML = "Össz ár (Ft)";
+    gameData = document.createElement("th");
+    gameRow.appendChild(gameData);
+    gameData.innerHTML = Atvalt(OsszErtek(games));
 };
 //Lekéri az elmentett játékok listáját a Json szerverről.
 function ListaLekeres(url) {
@@ -105,8 +114,7 @@ document.querySelector("#gameCollection").addEventListener("submit", (event) => 
 document.querySelector("#gameCollection").addEventListener("click", event => {
     if (event.target == document.getElementById("listGames")) {
         ListaLekeres("http://localhost:3000/games").then(
-            data => ListaFrissites(data)).then(() => Listazas());
-
+            data => ListaFrissites(data)).then(() => Listazas(games));
     };
 });
 /*
@@ -114,7 +122,7 @@ A Json szerver által visszaküldött válasz és callback függvény használat
 üzenetet küld a felhasználónak, hogy az újonnan elmentett játék feltöltődött-e 
 a szerverre.
 */
-function Uzenet(rendszeruzenet) {window.alert(rendszeruzenet)};
+function Uzenet(rendszeruzenet) { window.alert(rendszeruzenet) };
 
 function SzerverValasz(json, Callback) {
     rendszeruzenet = `A(Z) ${json.gameTitle} nevű játék sikeresen feltöltődött a 
@@ -123,9 +131,16 @@ function SzerverValasz(json, Callback) {
     Callback(rendszeruzenet);
 };
 /*
-Készítsen függvényt OsszErtek(jatekok) néven mely a konzolra kiírja az összes 
-játék árát. A függvény paramétere a játékok tárolására szolgáló gyűjtemény.
+Az OsszErtek függvény kiszámolja, majd a Listazas függvény a táblázat utolsó sorába 
+kiírja az összes játék árát.
+*/
+function OsszErtek(games) {
+    let gameSum = 0;
+    games.forEach(game => gameSum += game.gamePrice);
 
+    return gameSum;
+}
+/*
 Törölje az utolsó előtti játékot a gyűjteményből. 
 
 Szúrja be a mintában látható játékot az első helyre az ára 14.99€. 

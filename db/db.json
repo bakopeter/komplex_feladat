@@ -34,6 +34,13 @@
       "gameStudio": "Noble Master LLC",
       "gameOnline": true,
       "id": 5
+    },
+    {
+      "gameTitle": "Super Mario Bros",
+      "gamePrice": 40.33,
+      "gameStudio": "Nintendo",
+      "gameOnline": false,
+      "id": 6
     }
   ]
 }
