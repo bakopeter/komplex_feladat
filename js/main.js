@@ -61,6 +61,7 @@ function Listazas(games) {
     gameTable.style.visibility = "visible";
     let gameBody = document.getElementById("gameBody");
     gameBody.innerHTML = "";
+    let i = 1;
 
     games.forEach(game => {
         let gameRow = document.createElement("tr");
@@ -70,6 +71,9 @@ function Listazas(games) {
         CreateGameElement(gameRow, "td", Atvalt(game.gamePrice));
         CreateGameElement(gameRow, "td", game.gameStudio);
         CreateGameElement(gameRow, "td", game.gameOnline);
+        CreateGameElement(gameRow, "td", `<input class="form-check-input" type="radio" 
+        name="gameRadio" value=${i} id=${i}>`);
+        i++;
     });
 
     gameRow = document.createElement("tr");
@@ -107,11 +111,26 @@ document.querySelector("#gameCollection").addEventListener("submit", (event) => 
         json => SzerverValasz(json, Uzenet)
     );
 });
+
 document.querySelector("#gameCollection").addEventListener("click", event => {
     if (event.target == document.getElementById("listGames")) {
         ListaLekeres("http://localhost:3000/games").then(
             data => ListaFrissites(data)).then(() => Listazas(games));
     };
+
+    const radioButtons = document.querySelectorAll('input[name="gameRadio"]');
+
+    if (event.target == document.getElementById("deleteGame")) {
+        let selectedGame;
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                selectedGame = radioButton.value;
+                break;
+            }
+        }
+        JatekTorles(`http://localhost:3000/games/${selectedGame}`).then(
+            json => window.alert(JSON.stringify(json)))
+    }
 });
 /*
 A Json szerver által visszaküldött válasz és callback függvény használatával 
@@ -137,8 +156,23 @@ function OsszErtek(games) {
     return gameSum;
 }
 /*
-Törölje az utolsó előtti játékot a gyűjteményből. 
+Törli a kijelölt játékot a gyűjteményből. 
+*/
+function JatekTorles(url) {
+    let fetchOptions = {
+        method: 'DELETE',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin'
+    };
 
+    if (confirm("Biztosan törli a játékot?")) {
+        return fetch(url, fetchOptions)
+            .then(resp => resp.json());
+    }
+}
+
+/*
 Szúrja be a mintában látható játékot az első helyre az ára 14.99€. 
 Listázza az így keletkezett tömböt a konzolra.
 */
