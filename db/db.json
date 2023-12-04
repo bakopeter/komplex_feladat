@@ -41,6 +41,13 @@
       "gameStudio": "Nintendo",
       "gameOnline": false,
       "id": 6
+    },
+    {
+      "gameTitle": "100 Doors Games",
+      "gamePrice": 7.76,
+      "gameStudio": "Peaksel",
+      "gameOnline": true,
+      "id": 7
     }
   ]
 }

@@ -48,6 +48,14 @@ function JatekFeltoltes(game, url) {
 Készítsen Listazas() néven függvényt mely a fenti táblázat adatait tölti fel a 
 megfelelő formátumu adatokkal. 
 */
+function CreateGameElement(parentElement, childElement, data) {
+    let gameData = document.createElement(childElement);
+    parentElement.appendChild(gameData);
+    gameData.innerHTML = data;
+
+    return gameData;
+};
+
 function Listazas(games) {
     let gameTable = document.getElementById("gameTable");
     gameTable.style.visibility = "visible";
@@ -58,29 +66,17 @@ function Listazas(games) {
         let gameRow = document.createElement("tr");
         gameRow.className = " table-striped";
         gameBody.appendChild(gameRow);
-        gameData = document.createElement("td");
-        gameRow.appendChild(gameData);
-        gameData.innerHTML = game.gameTitle;
-        gameData = document.createElement("td");
-        gameRow.appendChild(gameData);
-        gameData.innerHTML = Atvalt(game.gamePrice);
-        gameData = document.createElement("td");
-        gameRow.appendChild(gameData);
-        gameData.innerHTML = game.gameStudio;
-        gameData = document.createElement("td");
-        gameRow.appendChild(gameData);
-        gameData.innerHTML = game.gameOnline;
+        CreateGameElement(gameRow, "td", game.gameTitle);
+        CreateGameElement(gameRow, "td", Atvalt(game.gamePrice));
+        CreateGameElement(gameRow, "td", game.gameStudio);
+        CreateGameElement(gameRow, "td", game.gameOnline);
     });
 
     gameRow = document.createElement("tr");
     gameRow.className = " table-striped";
     gameBody.appendChild(gameRow);
-    gameData = document.createElement("th");
-    gameRow.appendChild(gameData);
-    gameData.innerHTML = "Össz ár (Ft)";
-    gameData = document.createElement("th");
-    gameRow.appendChild(gameData);
-    gameData.innerHTML = Atvalt(OsszErtek(games));
+    CreateGameElement(gameRow, "th", "Össz ár (Ft)");
+    CreateGameElement(gameRow, "th", Atvalt(OsszErtek(games)));
 };
 //Lekéri az elmentett játékok listáját a Json szerverről.
 function ListaLekeres(url) {
@@ -131,8 +127,8 @@ function SzerverValasz(json, Callback) {
     Callback(rendszeruzenet);
 };
 /*
-Az OsszErtek függvény kiszámolja, majd a Listazas függvény a táblázat utolsó sorába 
-kiírja az összes játék árát.
+Az OsszErtek függvény kiszámolja, az Atvalt függvény átváltja forintra, majd a 
+Listazas függvény a táblázat utolsó sorába kiírja az összes játék árát.
 */
 function OsszErtek(games) {
     let gameSum = 0;
