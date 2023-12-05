@@ -8,20 +8,6 @@
       "id": 1
     },
     {
-      "gameTitle": "Football Manager 2024",
-      "gamePrice": 34.83,
-      "gameStudio": "SEGA",
-      "gameOnline": false,
-      "id": 2
-    },
-    {
-      "gameTitle": "EA SPORTS FC 24",
-      "gamePrice": 20.78,
-      "gameStudio": "Electronic Arts",
-      "gameOnline": false,
-      "id": 3
-    },
-    {
       "gameTitle": "Spider-Man",
       "gamePrice": 37.58,
       "gameStudio": "Marvel",
@@ -97,20 +83,6 @@
       "gameStudio": "SEGA",
       "gameOnline": true,
       "id": 14
-    },
-    {
-      "gameTitle": "NBA 2K22",
-      "gamePrice": 19.3,
-      "gameStudio": "2K",
-      "gameOnline": false,
-      "id": 15
-    },
-    {
-      "gameTitle": "Age of Empires IV",
-      "gamePrice": 11.89,
-      "gameStudio": "Relic Entertainment",
-      "gameOnline": false,
-      "id": 16
     }
   ]
 }

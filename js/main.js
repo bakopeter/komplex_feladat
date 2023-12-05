@@ -72,7 +72,7 @@ function Listazas(games) {
         CreateGameElement(gameRow, "td", game.gameStudio);
         CreateGameElement(gameRow, "td", game.gameOnline);
         CreateGameElement(gameRow, "td", `<input class="form-check-input" type="radio" 
-        name="gameRadio" value=${i} id=${i}>`);
+        name="gameRadio" value=${game.id} id=${game.id}>`);
         i++;
     });
 
@@ -171,7 +171,6 @@ function JatekTorles(url) {
             .then(resp => resp.json());
     }
 }
-
 /*
 Szúrja be a mintában látható játékot az első helyre az ára 14.99€. 
 Listázza az így keletkezett tömböt a konzolra.
