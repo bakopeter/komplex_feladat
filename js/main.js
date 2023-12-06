@@ -18,7 +18,7 @@ function Atvalt(euro) {
 Készítsen JatekFelvetel() néven függvényt mely a felhasználó által megadott 
 játékot lementi egy adatszerkezetbe (ez most a szimulált adatbázis). 
 */
-function JatekFelvetel() {
+function JatekFelvetel(game) {
     game.gameTitle = document.getElementById("gameTitle").value;
     document.getElementById("gameTitle").value = "";
     game.gamePrice = Number(document.getElementById("gamePrice").value);
@@ -100,6 +100,7 @@ function ListaFrissites(data) {
     for (let row of data) {
         games.push(row);
     }
+    return games;
 }
 /*
 Minden esetben az adatok tárolása és listázása esetén is esemény figyelők 
@@ -107,20 +108,20 @@ felhasználásával hívja meg a függvényeket.
 */
 document.querySelector("#gameCollection").addEventListener("submit", (event) => {
     event.preventDefault();
-    JatekFeltoltes(JatekFelvetel(), `http://localhost:3000/games`).then(
-        json => SzerverValasz(json, Uzenet)
+    JatekFeltoltes(JatekFelvetel(game), `http://localhost:3000/games`).then(
+        json => SzerverValasz(json, SikeresFeltoltes)
     );
 });
 
 document.querySelector("#gameCollection").addEventListener("click", event => {
     if (event.target == document.getElementById("listGames")) {
         ListaLekeres("http://localhost:3000/games").then(
-            data => ListaFrissites(data)).then(() => Listazas(games));
+            data => ListaFrissites(data)).then((games) => Listazas(games));
     };
 
-    const radioButtons = document.querySelectorAll('input[name="gameRadio"]');
-
     if (event.target == document.getElementById("deleteGame")) {
+        const radioButtons = document.querySelectorAll('input[name="gameRadio"]');
+
         let selectedGame;
         for (const radioButton of radioButtons) {
             if (radioButton.checked) {
@@ -128,8 +129,18 @@ document.querySelector("#gameCollection").addEventListener("click", event => {
                 break;
             }
         }
-        JatekTorles(`http://localhost:3000/games/${selectedGame}`).then(
-            json => window.alert(JSON.stringify(json)))
+        let deletedGame;
+        for (const game of games) {
+            if (game.id == selectedGame) {
+                deletedGame = game;
+            }
+        }
+        JatekTorles(`http://localhost:3000/games/${selectedGame}`, deletedGame).then(
+            json => {
+                if (JSON.stringify(json) == `{}`) {
+                    SzerverValasz(deletedGame, SikeresTorles);
+                }
+            })
     }
 });
 /*
@@ -137,13 +148,22 @@ A Json szerver által visszaküldött válasz és callback függvény használat
 üzenetet küld a felhasználónak, hogy az újonnan elmentett játék feltöltődött-e 
 a szerverre.
 */
-function Uzenet(rendszeruzenet) { window.alert(rendszeruzenet) };
-
-function SzerverValasz(json, Callback) {
-    rendszeruzenet = `A(Z) ${json.gameTitle} nevű játék sikeresen feltöltődött a 
+function SikeresFeltoltes(data) {
+    rendszeruzenet = `A(z) ${data.gameTitle} nevű játék sikeresen feltöltődött a 
     szerverre. Megtekintéséhez kattints a listázás gombra!`;
 
-    Callback(rendszeruzenet);
+    return rendszeruzenet;
+};
+
+function SikeresTorles(data) {
+    rendszeruzenet = `A(Z) ${data.gameTitle} nevű játék sikeresen törlődött a 
+    szerverről!`;
+
+    return rendszeruzenet;
+};
+
+function SzerverValasz(data, Callback) {
+    window.alert(Callback(data));
 };
 /*
 Az OsszErtek függvény kiszámolja, az Atvalt függvény átváltja forintra, majd a 
@@ -158,7 +178,7 @@ function OsszErtek(games) {
 /*
 Törli a kijelölt játékot a gyűjteményből. 
 */
-function JatekTorles(url) {
+function JatekTorles(url, deletedGame = null) {
     let fetchOptions = {
         method: 'DELETE',
         mode: 'cors',
@@ -166,9 +186,25 @@ function JatekTorles(url) {
         credentials: 'same-origin'
     };
 
-    if (confirm("Biztosan törli a játékot?")) {
+    if (deletedGame != null) {
+        if (confirm(`Biztosan törlöd a(z) ${deletedGame.gameTitle} játékot a szerverről?`)) {
+            return fetch(url, fetchOptions)
+                .then(resp => resp.json());
+        }
+    }
+    else {
         return fetch(url, fetchOptions)
             .then(resp => resp.json());
+    }
+
+}
+/**/
+function JasonAdatFrissites(gmes, url) {
+    for (const game of games) {
+        JatekTorles(`${url}/${game.id}`).then(
+            () => JatekFeltoltes(game, url)).then(
+                () => ListaLekeres(url)).then(
+                    data => ListaFrissites(data)).then((games) => Listazas(games));
     }
 }
 /*
