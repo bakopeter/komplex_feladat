@@ -1,88 +1,53 @@
 {
   "games": [
     {
-      "gameTitle": "Retro Commander",
-      "gamePrice": 0,
-      "gameStudio": "Noble Master LLC",
-      "gameOnline": true,
-      "id": 1
-    },
-    {
-      "gameTitle": "Spider-Man",
-      "gamePrice": 37.58,
-      "gameStudio": "Marvel",
-      "gameOnline": true,
-      "id": 4
-    },
-    {
       "gameTitle": "Super Mario Bros",
       "gamePrice": 40.33,
       "gameStudio": "Nintendo",
       "gameOnline": false,
-      "id": 5
+      "id": 1
     },
     {
-      "gameTitle": "The Legend of Zelda",
-      "gamePrice": 38.05,
-      "gameStudio": "Nintendo",
+      "gameTitle": "Jurassic World Evolution 2",
+      "gamePrice": 5.69,
+      "gameStudio": "Frontier Developments",
       "gameOnline": false,
-      "id": 6
+      "id": 2
     },
     {
-      "gameTitle": "Call of Duty",
-      "gamePrice": 30,
-      "gameStudio": "Activision",
-      "gameOnline": true,
-      "id": 7
+      "gameTitle": "Football Manager 2024",
+      "gamePrice": 34.83,
+      "gameStudio": "SEGA",
+      "gameOnline": false,
+      "id": 3
     },
     {
-      "gameTitle": "Anno 1800",
-      "gamePrice": 50.39,
-      "gameStudio": "Ubisoft",
+      "gameTitle": "Street Fighter 6",
+      "gamePrice": 29.2,
+      "gameStudio": "Metacritic",
       "gameOnline": true,
-      "id": 8
+      "id": 4
     },
     {
       "gameTitle": "100 Doors Games",
       "gamePrice": 7.76,
       "gameStudio": "Peaksel",
       "gameOnline": false,
-      "id": 9
+      "id": 5
     },
     {
-      "gameTitle": "103",
-      "gamePrice": 4.93,
-      "gameStudio": "Dystopia Interactive",
-      "gameOnline": false,
-      "id": 10
+      "gameTitle": "NBA 2K22 - Europe",
+      "gamePrice": 19.3,
+      "gameStudio": "2K",
+      "gameOnline": true,
+      "id": 6
     },
     {
       "gameTitle": "10 Second Ninja X",
       "gamePrice": 7.34,
       "gameStudio": "Thalamus Digital",
-      "gameOnline": false,
-      "id": 11
-    },
-    {
-      "gameTitle": "10 Second Run RETURNS",
-      "gamePrice": 2.76,
-      "gameStudio": "Edia",
-      "gameOnline": false,
-      "id": 12
-    },
-    {
-      "gameTitle": "11111Game",
-      "gamePrice": 7.7,
-      "gameStudio": "Insane Code",
-      "gameOnline": false,
-      "id": 13
-    },
-    {
-      "gameTitle": "Football Manager 2023",
-      "gamePrice": 14.99,
-      "gameStudio": "SEGA",
       "gameOnline": true,
-      "id": 14
+      "id": 7
     }
   ]
 }

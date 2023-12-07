@@ -32,6 +32,7 @@ function JatekFelvetel(game) {
 };
 //A lementett játékot feltölti a Json szerverre (ez most a szimulált adatbázis:).
 function JatekFeltoltes(game, url) {
+    delete game.id;
     let fetchOptions = {
         method: "POST",
         mode: "cors",
@@ -122,7 +123,7 @@ document.querySelector("#gameCollection").addEventListener("click", event => {
     if (event.target == document.getElementById("deleteGame")) {
         const radioButtons = document.querySelectorAll('input[name="gameRadio"]');
 
-        let selectedGame;
+        let selectedGame = null;
         for (const radioButton of radioButtons) {
             if (radioButton.checked) {
                 selectedGame = radioButton.value;
@@ -135,13 +136,20 @@ document.querySelector("#gameCollection").addEventListener("click", event => {
                 deletedGame = game;
             }
         }
-        JatekTorles(`http://localhost:3000/games/${selectedGame}`, deletedGame).then(
-            json => {
-                if (JSON.stringify(json) == `{}`) {
-                    SzerverValasz(deletedGame, SikeresTorles);
-                }
-            })
-    }
+
+        if (selectedGame != null) {
+            JatekTorles(`http://localhost:3000/games/${selectedGame}`, deletedGame).then(
+                json => {
+                    if (JSON.stringify(json) == `{}`) {
+                        SzerverValasz(deletedGame, SikeresTorles);
+                    }
+                })
+        }
+    };
+
+    if (event.target == document.getElementById("insertGame")) {
+        JsonAdatFrissites(games, `http://localhost:3000/games`);
+    };
 });
 /*
 A Json szerver által visszaküldött válasz és callback függvény használatával 
@@ -199,14 +207,24 @@ function JatekTorles(url, deletedGame = null) {
 
 }
 /**/
-function JasonAdatFrissites(gmes, url) {
-    for (const game of games) {
-        JatekTorles(`${url}/${game.id}`).then(
-            () => JatekFeltoltes(game, url)).then(
-                () => ListaLekeres(url)).then(
-                    data => ListaFrissites(data)).then((games) => Listazas(games));
-    }
-}
+function JsonAdatFrissites(games, url) {
+    ListaLekeres("http://localhost:3000/games").then(
+        data => ListaFrissites(data)).then(
+            () => games.forEach(game => {
+                JatekTorles(`${url}/${game.id}`, game).then(
+                    json => JSON.stringify(json))
+            })
+        ).then(
+            () => games.forEach(game => {
+                JatekFeltoltes(game, url).then(
+                    json => JSON.stringify(json))
+            })
+        ).then(
+            () => ListaLekeres("http://localhost:3000/games")).then(
+                (games) => Listazas(games)).then(
+                    data => ListaFrissites(data)).then(
+                        () => window.alert("Sikeres adatfrissítés!"));
+};
 /*
 Szúrja be a mintában látható játékot az első helyre az ára 14.99€. 
 Listázza az így keletkezett tömböt a konzolra.
